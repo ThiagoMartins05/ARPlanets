@@ -31,7 +31,9 @@ class ViewController: UIViewController {
         
         let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
         
-        earth.runAction(action)
+        let forever = SCNAction.repeatForever(action)
+        
+        earth.runAction(forever)
     }
 
 
