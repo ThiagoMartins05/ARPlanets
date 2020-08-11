@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         let earth = SCNNode()
         earth.geometry = SCNSphere(radius: 0.2)
         earth.geometry?.firstMaterial?.diffuse.contents = UIImage(named:"Earth day")
+        earth.geometry?.firstMaterial?.emission.contents = UIImage(named: "Earth clouds")
         earth.geometry?.firstMaterial?.specular.contents = UIImage(named:"Earth Specular Texture")
         earth.position = SCNVector3(0, 0, -1)
         
