@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         earth.geometry?.firstMaterial?.diffuse.contents = UIImage(named:"Earth day")
         earth.geometry?.firstMaterial?.emission.contents = UIImage(named: "Earth clouds")
         earth.geometry?.firstMaterial?.specular.contents = UIImage(named:"Earth Specular Texture")
+        earth.geometry?.firstMaterial?.normal.contents = UIImage(named:"Earth normal map")
         earth.position = SCNVector3(0, 0, -1)
         
         self.sceneView.scene.rootNode.addChildNode(earth)
