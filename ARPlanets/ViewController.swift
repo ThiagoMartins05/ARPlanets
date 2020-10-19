@@ -34,14 +34,18 @@ class ViewController: UIViewController {
         
         sun.addChildNode(earth)
         
-      //  let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
         
-     //   let forever = SCNAction.repeatForever(action)
+        let venus = planet(geometry: SCNSphere(radius: 0.18), diffuse: UIImage(named: "Venus surface")!, specular: nil, emission: UIImage(named: "Venus atmosphere"), normal: nil, position: SCNVector3(0.7, 0, 0))
         
-      //  earth.runAction(forever)
+        sun.addChildNode(venus)
+        
+        
+//        let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
+//       let forever = SCNAction.repeatForever(action)
+//       sun.runAction(forever)
     }
     
-    func planet(geometry:SCNGeometry, diffuse: UIImage, specular: UIImage, emission: UIImage, normal: UIImage, position: SCNVector3) -> SCNNode{
+    func planet(geometry:SCNGeometry, diffuse: UIImage, specular: UIImage?, emission: UIImage?, normal: UIImage?, position: SCNVector3) -> SCNNode{
        
         let planet = SCNNode()
         planet.geometry = geometry
