@@ -23,6 +23,13 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        let sun = SCNNode(geometry: SCNSphere(radius: 0.35))
+        sun.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "Sun diffuse")
+        sun.position = SCNVector3(0, 0, -1)
+        self.sceneView.scene.rootNode.addChildNode(sun)
+        
+        
+        
         let earth = SCNNode()
         earth.geometry = SCNSphere(radius: 0.2)
         earth.geometry?.firstMaterial?.diffuse.contents = UIImage(named:"Earth day")
@@ -31,7 +38,7 @@ class ViewController: UIViewController {
         earth.geometry?.firstMaterial?.normal.contents = UIImage(named:"Earth normal map")
         earth.position = SCNVector3(0, 0, -1)
         
-        self.sceneView.scene.rootNode.addChildNode(earth)
+        sun.addChildNode(earth)
         
         let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
         
