@@ -26,18 +26,30 @@ class ViewController: UIViewController {
         let sun = SCNNode(geometry: SCNSphere(radius: 0.35))
         sun.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "Sun diffuse")
         sun.position = SCNVector3(0, 0, -1)
+        
+        let earthParent = SCNNode()
+        let venusParent = SCNNode()
+        
+        
         self.sceneView.scene.rootNode.addChildNode(sun)
         
+        self.sceneView.scene.rootNode.addChildNode(earthParent)
+        
+        self.sceneView.scene.rootNode.addChildNode(venusParent)
+        
+        earthParent.position = SCNVector3(0, 0, -1)
+        venusParent.position = SCNVector3(0, 0, -1)
         
         
         let earth = planet(geometry: SCNSphere(radius: 0.2), diffuse: UIImage(named:"Earth day")!, specular: UIImage(named:"Earth Specular Texture")!, emission: UIImage(named: "Earth clouds")!, normal: UIImage(named:"Earth normal map")!, position: SCNVector3(1.2, 0, 0))
         
-        sun.addChildNode(earth)
+        earthParent.addChildNode(earth)
         
         
-        let venus = planet(geometry: SCNSphere(radius: 0.18), diffuse: UIImage(named: "Venus surface")!, specular: nil, emission: UIImage(named: "Venus atmosphere"), normal: nil, position: SCNVector3(0.7, 0, 0))
+        let venus = planet(geometry: SCNSphere(radius: 0.1), diffuse: UIImage(named: "Venus surface")!, specular: nil, emission: UIImage(named: "Venus atmosphere"), normal: nil, position: SCNVector3(0.7, 0, 0))
         
-        sun.addChildNode(venus)
+        venusParent.addChildNode(venus)
+        
         
         
         let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
