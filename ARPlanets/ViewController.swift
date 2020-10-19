@@ -30,21 +30,29 @@ class ViewController: UIViewController {
         
         
         
-        let earth = SCNNode()
-        earth.geometry = SCNSphere(radius: 0.2)
-        earth.geometry?.firstMaterial?.diffuse.contents = UIImage(named:"Earth day")
-        earth.geometry?.firstMaterial?.emission.contents = UIImage(named: "Earth clouds")
-        earth.geometry?.firstMaterial?.specular.contents = UIImage(named:"Earth Specular Texture")
-        earth.geometry?.firstMaterial?.normal.contents = UIImage(named:"Earth normal map")
-        earth.position = SCNVector3(0, 0, -1)
+        let earth = planet(geometry: SCNSphere(radius: 0.2), diffuse: UIImage(named:"Earth day")!, specular: UIImage(named:"Earth Specular Texture")!, emission: UIImage(named: "Earth clouds")!, normal: UIImage(named:"Earth normal map")!, position: SCNVector3(1.2, 0, 0))
         
         sun.addChildNode(earth)
         
-        let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
+      //  let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
         
-        let forever = SCNAction.repeatForever(action)
+     //   let forever = SCNAction.repeatForever(action)
         
-        earth.runAction(forever)
+      //  earth.runAction(forever)
+    }
+    
+    func planet(geometry:SCNGeometry, diffuse: UIImage, specular: UIImage, emission: UIImage, normal: UIImage, position: SCNVector3) -> SCNNode{
+       
+        let planet = SCNNode()
+        planet.geometry = geometry
+        planet.geometry?.firstMaterial?.diffuse.contents = diffuse
+        planet.geometry?.firstMaterial?.emission.contents = emission
+        planet.geometry?.firstMaterial?.specular.contents = specular
+        planet.geometry?.firstMaterial?.normal.contents = normal
+        planet.position = position
+
+        
+        return planet
     }
 
 
