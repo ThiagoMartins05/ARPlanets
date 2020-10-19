@@ -40,9 +40,9 @@ class ViewController: UIViewController {
         sun.addChildNode(venus)
         
         
-//        let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
-//       let forever = SCNAction.repeatForever(action)
-//       sun.runAction(forever)
+        let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
+        let forever = SCNAction.repeatForever(action)
+        sun.runAction(forever)
     }
     
     func planet(geometry:SCNGeometry, diffuse: UIImage, specular: UIImage?, emission: UIImage?, normal: UIImage?, position: SCNVector3) -> SCNNode{
