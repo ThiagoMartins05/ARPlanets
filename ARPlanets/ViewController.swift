@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         
         let earthParent = SCNNode()
         let venusParent = SCNNode()
-        
+        let moonParent = SCNNode()
         
         self.sceneView.scene.rootNode.addChildNode(sun)
         
@@ -37,9 +37,11 @@ class ViewController: UIViewController {
         
         self.sceneView.scene.rootNode.addChildNode(venusParent)
         
+        earthParent.addChildNode(moonParent)
+        
         earthParent.position = SCNVector3(0, 0, -1)
         venusParent.position = SCNVector3(0, 0, -1)
-        
+        moonParent.position = SCNVector3(1.2, 0, 0)
         
         let earth = planet(geometry: SCNSphere(radius: 0.2), diffuse: UIImage(named:"Earth day")!, specular: UIImage(named:"Earth Specular Texture")!, emission: UIImage(named: "Earth clouds")!, normal: UIImage(named:"Earth normal map")!, position: SCNVector3(1.2, 0, 0))
         
@@ -52,7 +54,7 @@ class ViewController: UIViewController {
         
         let moon = planet(geometry: SCNSphere(radius: 0.05), diffuse: UIImage(named: "Moon diffuse"), specular: nil, emission: nil, normal: nil, position: SCNVector3(0, 0, -0.3))
         
-        earth.addChildNode(moon)
+        moonParent.addChildNode(moon)
         
         let sunAction = Rotation(time: 8)
         sun.runAction(sunAction)
@@ -62,6 +64,9 @@ class ViewController: UIViewController {
         
         let earthAction = Rotation(time: 8)
         earth.runAction(earthAction)
+        
+        let moonAction = Rotation(time: 5)
+        moonParent.runAction(moonAction)
         
         let venusParentAction = Rotation(time: 10)
         venusParent.runAction(venusParentAction)
