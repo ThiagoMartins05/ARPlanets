@@ -59,47 +59,30 @@ class ViewController: UIViewController {
         venus.addChildNode(venusMoon)
         
         
-        let sunAction = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
+        let sunAction = Rotation(time: 8)
+        sun.runAction(sunAction)
         
-        let forever = SCNAction.repeatForever(sunAction)
+        let earthParentAction = Rotation(time: 14)
+        earthParent.runAction(earthParentAction)
         
-        sun.runAction(forever)
+        let earthAction = Rotation(time: 8)
+        earth.runAction(earthAction)
         
+        let venusParentAction = Rotation(time: 10)
+        venusParent.runAction(venusParentAction)
         
-        
-        let earthParentRotation = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 14)
-        
-        let foreverEarth = SCNAction.repeatForever(earthParentRotation)
-        
-        earthParent.runAction(foreverEarth)
-        
-        
-        
-        let earthRotation = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
-        
-        let foreverEarthRotation = SCNAction.repeatForever(earthRotation)
-        
-        earth.runAction(foreverEarthRotation)
-        
-        
-        
-        let venusParentRotation = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 10)
-        
-        let foreverVenus = SCNAction.repeatForever(venusParentRotation)
-        
-        venusParent.runAction(foreverVenus)
-        
-        
-        
-        let venusRotation = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 9)
-        
-        let foreverVenusRotation = SCNAction.repeatForever(venusRotation)
-        
-        venus.runAction(foreverVenusRotation)
-        
+        let venusAction = Rotation(time: 9)
+        venus.runAction(venusAction)
         
     }
     
+    func Rotation(time: TimeInterval) -> SCNAction{
+        let Rotation = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: time)
+        
+        let foreverRotation = SCNAction.repeatForever(Rotation)
+        
+        return foreverRotation
+    }
     
     func planet(geometry:SCNGeometry, diffuse: UIImage?, specular: UIImage?, emission: UIImage?, normal: UIImage?, position: SCNVector3) -> SCNNode{
        
