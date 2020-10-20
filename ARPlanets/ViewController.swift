@@ -54,11 +54,6 @@ class ViewController: UIViewController {
         
         earth.addChildNode(moon)
         
-        let venusMoon = planet(geometry: SCNSphere(radius: 0.05), diffuse: UIImage(named: "Moon diffuse"), specular: nil, emission: nil, normal: nil, position: SCNVector3(0, 0, -0.3))
-        
-        venus.addChildNode(venusMoon)
-        
-        
         let sunAction = Rotation(time: 8)
         sun.runAction(sunAction)
         
