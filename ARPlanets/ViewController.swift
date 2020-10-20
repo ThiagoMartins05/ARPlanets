@@ -50,10 +50,20 @@ class ViewController: UIViewController {
         
         venusParent.addChildNode(venus)
         
-        
-        
         let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
         let forever = SCNAction.repeatForever(action)
+        
+        
+        let earthParentRotation = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 14)
+        
+        let foreverEarth = SCNAction.repeatForever(earthParentRotation)
+        
+        let venusParentRotation = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 10)
+        
+        let foreverVenus = SCNAction.repeatForever(venusParentRotation)
+        
+        earthParent.runAction(foreverEarth)
+        venusParent.runAction(foreverVenus)
         sun.runAction(forever)
     }
     
