@@ -66,11 +66,21 @@ class ViewController: UIViewController {
         sun.runAction(forever)
         
         
+        
         let earthParentRotation = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 14)
         
         let foreverEarth = SCNAction.repeatForever(earthParentRotation)
         
         earthParent.runAction(foreverEarth)
+        
+        
+        
+        let earthRotation = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 8)
+        
+        let foreverEarthRotation = SCNAction.repeatForever(earthRotation)
+        
+        earth.runAction(foreverEarthRotation)
+        
         
         
         let venusParentRotation = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 10)
@@ -79,7 +89,17 @@ class ViewController: UIViewController {
         
         venusParent.runAction(foreverVenus)
         
+        
+        
+        let venusRotation = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians) , z: 0, duration: 9)
+        
+        let foreverVenusRotation = SCNAction.repeatForever(venusRotation)
+        
+        venus.runAction(foreverVenusRotation)
+        
+        
     }
+    
     
     func planet(geometry:SCNGeometry, diffuse: UIImage?, specular: UIImage?, emission: UIImage?, normal: UIImage?, position: SCNVector3) -> SCNNode{
        
